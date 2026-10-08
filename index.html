@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#b91c1c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>LINKON</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash"><img class="splash-photo" src="profile.jpg" alt=""><h1>LINKON</h1><p>Overtime Calculator</p><div class="by">Built by<b id="builder"></b></div></div>
+
+<div class="top"><header class="app-bar"><img id="avatarTop" class="avatar" src="profile.jpg" alt="Profile"><div class="ttl"><b>LINKON</b><span>Overtime Calculator</span></div><input type="month" id="monthPicker" aria-label="Month"></header>
+<nav class="tabs">
+<button data-go="home" class="on">Home</button><button data-go="records">Records</button><button data-go="employee">Employee</button><button data-go="settings">Settings</button></nav></div>
+
+<main>
+<section data-tab="home">
+ <div class="banner"><img src="banner.jpg" alt=""><div class="banner-text"><b>LINKON</b><span>Overtime Calculator</span></div></div>
+ <div class="card total"><div class="big"><span id="totalHours">0</span> HOURS</div><div id="totalLabel"></div></div>
+ <div class="card"><h2>Daily hours</h2><div id="dayGrid"></div></div>
+ <div class="card"><h2>Monthly summary</h2><div id="summaryTable"></div></div>
+ <div class="card"><h2>Pay calculator</h2>
+  <label>OT rate per hour<input type="number" id="payRate" min="0" step="0.01" inputmode="decimal"></label>
+  <label>Night bill per night shift<input type="number" id="payNight" min="0" step="0.01" inputmode="decimal"></label>
+  <label>Attendance bonus (this month)<input type="number" id="bonusAtt" min="0" step="0.01" inputmode="decimal"></label>
+  <label>Attitude bonus (this month)<input type="number" id="bonusAtd" min="0" step="0.01" inputmode="decimal"></label>
+  <label>Currency name<input id="payCur" maxlength="6"></label>
+  <div id="payResult"></div></div>
+ <div class="card"><h2 id="formTitle">Add OT record</h2>
+  <label>Date<input type="date" id="recDate"></label>
+  <label>Shift<select id="recShift"></select></label>
+  <label>OT hours<input type="number" id="recHours" step="0.25" min="0" inputmode="decimal"></label>
+  <div class="row"><button class="primary" id="addBtn">ADD OT RECORD</button><button id="cancelEdit" hidden>Cancel</button></div>
+ </div>
+</section>
+
+<section data-tab="records" hidden>
+ <div class="card"><h2>OT records</h2><div id="recordList"></div>
+ <button class="danger" id="clearMonth">Clear this month</button></div>
+</section>
+
+<section data-tab="employee" hidden>
+ <div class="card"><h2>Employee</h2>
+  <div class="avrow"><img id="avatarBig" class="avatar big" src="profile.jpg" alt="Profile"><div><button id="avatarBtn">Change picture</button><button id="avatarReset">Default</button><input type="file" id="avatarFile" accept="image/*" hidden></div></div>
+  <label>Employee name<input id="empName" autocomplete="off"></label>
+  <label>Employee ID<input id="empId" autocomplete="off"></label>
+  <button class="primary" id="saveEmp">Save employee</button></div>
+ <div class="card"><h2>Backup</h2>
+  <button id="exportBtn">Export data (JSON)</button>
+  <button id="importBtn">Import data</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+</section>
+
+<section data-tab="settings" hidden>
+ <div class="card"><h2>OT rules (hours)</h2>
+  <label>Day<input type="number" id="setDay" step="0.25" min="0.25"></label>
+  <label>Night<input type="number" id="setNight" step="0.25" min="0.25"></label>
+  <label>Friday option 1<input type="number" id="setFri1" step="0.25" min="0.25"></label>
+  <label>Friday option 2<input type="number" id="setFri2" step="0.25" min="0.25"></label>
+  <label>Theme<select id="setTheme"><option value="dark">Black &amp; Red</option><option value="light">White &amp; Red</option></select></label>
+  <button class="primary" id="saveSettings">Save settings</button>
+  <button id="resetSettings">Restore defaults</button></div>
+ <div class="card"><h2>Privacy</h2><p>Version 1 stores your employee details and OT records only on this device. Nothing is sent to a server and no analytics are used. Export a backup regularly: clearing browser data removes your records.</p></div>
+</section>
+</main>
+
+
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
